@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Loading = () => (
-    <div>
-        <div className="lds-circle">
+    <div className="loading">
+        <div className="loading-circle">
             <div></div>
         </div>
         <div>
