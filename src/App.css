@@ -75,8 +75,14 @@
   }
 }
 
-.show-toggle {
-  margin: 30px 0 0 60px;
+.toggle {
+  margin: 30px 20vw 0 0;
+  text-align: right;
+}
+
+.toggle > .title {
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .switch {
@@ -84,6 +90,7 @@
   display: inline-block;
   width: 60px;
   height: 34px;
+  margin: 0 10px;
 }
 
 .switch input {

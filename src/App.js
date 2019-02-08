@@ -13,6 +13,7 @@ class App extends Component {
             gradeData: [],
             subGradeData: [],
             showSubGrade: false,
+            size: 600,
         };
         this.parseData = this.parseData.bind(this);
     }
@@ -85,18 +86,31 @@ class App extends Component {
         })
     }
 
+    toggleSize = () => {
+        this.setState((prevState) => {
+            let size = 600;
+            if (prevState.size === 600) {
+                size = 1200;
+            }
+            prevState.size = size;
+            return prevState;
+        })
+    }
+
     render() {
-        const { subGradeData, gradeData, showSubGrade } = this.state;
+        const { subGradeData, gradeData, showSubGrade, size } = this.state;
         let data = gradeData;
+        let axisLabel = 'Grade';
         if(showSubGrade) {
             data = subGradeData;
+            axisLabel = 'SubGrade';
         }
         return (
             <div className="App">
                 {data.length === 0 ? <Loading /> :
                     <div>
                         <BarChart
-                            width={600}
+                            width={size}
                             height={300}
                             data={data}
                             margin={{ top: 5, right: 20, left: 20, bottom: 20 }}
@@ -104,7 +118,7 @@ class App extends Component {
                         >
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="value">
-                                <Label value="Grade" offset={-10} position="insideBottom" />
+                                <Label value={axisLabel} offset={-10} position="insideBottom" />
                             </XAxis>
                             <YAxis>
                                 <Label value="Rate (%)" offset={15} angle={-90} position="insideLeft" />
@@ -114,14 +128,27 @@ class App extends Component {
                             />
                             <Bar dataKey="rate" fill="#8884d8" />
                         </BarChart>
-                        <div className="show-toggle">
+                        <div className="toggle">
+                            <div className="title">
+                                Toggle Grade Type
+                            </div>
+                            Grade
                             <label className="switch">
                                 <input type="checkbox" onChange={this.toggleShowSubGrade}/>
                                 <span className="slider"></span>
                             </label>
-                            <div>
-                                Show {showSubGrade ? 'Grade' : 'SubGrade'}
+                            SubGrade
+                        </div>
+                        <div className="toggle">
+                            <div className="title">
+                                Toggle Graph Size
                             </div>
+                            Small
+                            <label className="switch">
+                                <input type="checkbox" onChange={this.toggleSize}/>
+                                <span className="slider"></span>
+                            </label>
+                            Large
                         </div>
                     </div>
                 }
