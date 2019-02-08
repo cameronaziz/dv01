@@ -127,7 +127,7 @@ class App extends Component {
                             <RechartsTooltip
                                 content={Tooltip}
                             />
-                            <Bar dataKey="rate" fill="#8884d8" />
+                            <Bar dataKey="rate" fill="#46AFDF" />
                         </BarChart>
                         <Menu toggleSize={this.toggleSize} toggleShowSubGrade={this.toggleShowSubGrade} />
                     </div>

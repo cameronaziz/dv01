@@ -3,35 +3,6 @@
   padding-top: 100px; 
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .tooltip {
   margin: 0px;
   padding: 10px;
@@ -55,7 +26,7 @@
   height: 51px;
   margin: 6px;
   border-radius: 50%;
-  background: #8884d8;
+  background: #46AFDF;
   animation: loading-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
 
@@ -106,7 +77,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #8eceec;
   -webkit-transition: .4s;
   transition: .4s;
 }
