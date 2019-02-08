@@ -29,4 +29,9 @@ export default [
         amount: 0,
         rate: 0,
     },
+    {
+        grade: 'G',
+        amount: 0,
+        rate: 0,
+    },
 ];
