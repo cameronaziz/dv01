@@ -4,6 +4,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as ReTooltip } from
 import graphData from './dataModel';
 import rawData from './LoanStats3a.csv';
 import Tooltip from './Tooltip';
+import Loading from './Loading';
 import './App.css';
 
 class App extends Component {
@@ -17,14 +18,6 @@ class App extends Component {
 
     componentDidMount() {
         this.getCsvData();
-    }
-
-    fetchCsv() {
-        return fetch(rawData).then((response) => {
-            return response.text()
-        }).then((text) => {
-            return text
-        });
     }
 
     parseData(result) {
@@ -45,30 +38,35 @@ class App extends Component {
     }
 
     async getCsvData() {
-        let csvData = await this.fetchCsv();
+        let csvData = await fetch(rawData).then((response) => {
+            return response.text()
+        })
         Papa.parse(csvData, {
             complete: this.parseData
         });
     }
 
     render() {
+        const { data } = this.state;
         return (
             <div className="App">
-                <BarChart
-                    width={600}
-                    height={300}
-                    data={this.state.data}
-                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-                    style={{ margin: '100px auto'}}
-                >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="grade" />
-                    <YAxis />
-                    <ReTooltip
-                        content={Tooltip}
-                    />
-                    <Bar dataKey="rate" fill="#8884d8" />
-                </BarChart>
+                {data.length === 0 ? <Loading /> :
+                    <BarChart
+                        width={600}
+                        height={300}
+                        data={this.state.data}
+                        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                        style={{ margin: '0 auto'}}
+                    >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="grade" />
+                        <YAxis />
+                        <ReTooltip
+                            content={Tooltip}
+                        />
+                        <Bar dataKey="rate" fill="#8884d8" />
+                    </BarChart>
+                }
             </div>
         );
     }

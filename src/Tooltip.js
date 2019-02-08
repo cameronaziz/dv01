@@ -6,7 +6,6 @@ const Tooltip = ({ active, payload }) => {
             <div className="tooltip">
                 <p className="rate">Average Rate: {payload[0].value}%</p>
                 <p className="amount">Amount of Loans: {payload[0].payload.amount}</p>
-                <p className="grade">Grade: {payload[0].payload.grade}</p>
             </div>
         );
     }
