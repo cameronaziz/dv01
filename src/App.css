@@ -26,7 +26,7 @@
   height: 51px;
   margin: 6px;
   border-radius: 50%;
-  background: #46AFDF;
+  background: #1A688F;
   animation: loading-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
 
@@ -47,8 +47,8 @@
 }
 
 .toggle {
-  margin: 30px 20vw 0 0;
-  text-align: right;
+  margin: 30px 0 0 30vw;
+  text-align: left;
 }
 
 .toggle > .title {
@@ -77,7 +77,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #8eceec;
+  background-color: #B6DFF3;
   -webkit-transition: .4s;
   transition: .4s;
 }

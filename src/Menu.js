@@ -4,7 +4,7 @@ const Menu = ({ toggleShowSubGrade, toggleSize }) => (
     <Fragment>
         <div className="toggle">
             <div className="title">
-                Toggle Grade Type
+                Grade Type
             </div>
             Grade
             <label className="switch">
@@ -15,7 +15,7 @@ const Menu = ({ toggleShowSubGrade, toggleSize }) => (
         </div>
         <div className="toggle">
             <div className="title">
-                Toggle Graph Size
+                Graph Size
             </div>
             Small
             <label className="switch">
