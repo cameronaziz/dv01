@@ -48,6 +48,7 @@
   display: inline-block;
   transform: translateZ(1px);
 }
+
 .loading-circle > div {
   display: inline-block;
   width: 51px;
@@ -57,6 +58,7 @@
   background: #8884d8;
   animation: loading-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
+
 @keyframes loading-circle {
   0%, 100% {
     animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
