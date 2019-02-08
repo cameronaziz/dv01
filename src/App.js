@@ -4,6 +4,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip,
 import rawData from './LoanStats3a.csv';
 import Tooltip from './Tooltip';
 import Loading from './Loading';
+import Menu from './Menu';
 import './App.css';
 
 class App extends Component {
@@ -20,6 +21,15 @@ class App extends Component {
 
     componentDidMount() {
         this.getCsvData();
+    }
+
+    async getCsvData() {
+        let csvData = await fetch(rawData).then((response) => {
+            return response.text()
+        })
+        Papa.parse(csvData, {
+            complete: this.parseData
+        });
     }
 
     parseData(result) {
@@ -68,15 +78,6 @@ class App extends Component {
             return 0;
         });
         this.setState({ gradeData, subGradeData });
-    }
-
-    async getCsvData() {
-        let csvData = await fetch(rawData).then((response) => {
-            return response.text()
-        })
-        Papa.parse(csvData, {
-            complete: this.parseData
-        });
     }
 
     toggleShowSubGrade = () => {
@@ -128,28 +129,7 @@ class App extends Component {
                             />
                             <Bar dataKey="rate" fill="#8884d8" />
                         </BarChart>
-                        <div className="toggle">
-                            <div className="title">
-                                Toggle Grade Type
-                            </div>
-                            Grade
-                            <label className="switch">
-                                <input type="checkbox" onChange={this.toggleShowSubGrade}/>
-                                <span className="slider"></span>
-                            </label>
-                            SubGrade
-                        </div>
-                        <div className="toggle">
-                            <div className="title">
-                                Toggle Graph Size
-                            </div>
-                            Small
-                            <label className="switch">
-                                <input type="checkbox" onChange={this.toggleSize}/>
-                                <span className="slider"></span>
-                            </label>
-                            Large
-                        </div>
+                        <Menu toggleSize={this.toggleSize} toggleShowSubGrade={this.toggleShowSubGrade} />
                     </div>
                 }
             </div>
